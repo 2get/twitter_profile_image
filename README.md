@@ -1,9 +1,5 @@
 # TwitterProfileImage
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/twitter_profile_image`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+TwitterProfileImage.configure do |config|
+  config.consumer_key = 'YOUR_CONSUMER_KEY'
+  config.consumer_secret = 'YOUR_CONSUMER_SECRET'
+  config.token = 'YOUR_ACCESS_TOKEN'
+  config.token_secret = 'YOUR_ACCESS_SECRET'
+end
+
+TwitterProfileImage.get('SCREEN_NAME', 'original')
+```
 
 ## Development
 
