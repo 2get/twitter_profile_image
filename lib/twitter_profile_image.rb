@@ -27,18 +27,18 @@ module TwitterProfileImage
     end
 
     def profile_image_url_replace_by_variant(url, variant)
-      original_url = url.gsub(/_(normal|bigger|mini)\.(png|jpe?g)/, '.\2')
+      original_url = url.gsub(/_(normal|bigger|mini)\.(png|jpe?g)/i, '.\2')
       case variant
       when 'normal'
-        original_url.gsub(/\.(png|jpe?g)/, '_normal.\1')
+        original_url.gsub(/\.(png|jpe?g)/i, '_normal.\1')
       when 'bigger'
-        original_url.gsub(/\.(png|jpe?g)/, '_bigger.\1')
+        original_url.gsub(/\.(png|jpe?g)/i, '_bigger.\1')
       when 'mini'
-        original_url.gsub(/\.(png|jpe?g)/, '_mini.\1')
+        original_url.gsub(/\.(png|jpe?g)/i, '_mini.\1')
       when 'original'
         original_url
       else
-        original_url.gsub(/\.(png|jpe?g)/, '_normal.\1')
+        original_url.gsub(/\.(png|jpe?g)/i, '_normal.\1')
       end
     end
   end
