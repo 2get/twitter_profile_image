@@ -13,15 +13,18 @@ module TwitterProfileImage
       @configuration ||= TwitterProfileImage::Configuration.new
     end
 
-    def get(screen_name, variant='original')
-      api = Api.new(
+    def api
+      @api ||= Api.new(
         {
           consumer_key: @configuration.consumer_key,
           consumer_secret: @configuration.consumer_secret,
           token: @configuration.token,
           token_secret: @configuration.token_secret
         })
-      user = api.get_users_show(screen_name)
+    end
+
+    def get(screen_name, variant='original')
+      user = @api.get_users_show(screen_name)
       url = user['profile_image_url_https']
       profile_image_url_replace_by_variant(url, variant)
     end
@@ -46,6 +49,10 @@ module TwitterProfileImage
   class Api
     def initialize(credentials)
       @t = TwitterAPI::Client.new(credentials)
+    end
+
+    def client
+      @t
     end
 
     def get_users_show(screen_name)
